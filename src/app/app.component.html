@@ -1,14 +1,55 @@
 <div class="container-fluid">
+  <div class="row">
 
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1>I Love Coctails</h1>
-      <p> {{ coctail.name }}</p>
-      <img src="{{ coctail.imgPath }}">
+    <div class="col-sm-3">
+      <img src="assets\coctail.png" class="mx-auto d-block" style="width:50%" alt="">
     </div>
+
+    <div class="col-sm-6 text-center">
+      <h1>Coctail Finder</h1>
+      <div class="flex">
+
+        <form class="flex" id="submit" (ngSubmit)="onFetchCoctail(f.value.search)" #f="ngForm">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search for coctails or keywords"
+            ngModel
+            name="search"
+            required
+          />
+          <button class="search-btn" type="submit" [disabled]="!f.valid">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+
+        <button class="random-btn" id="random" (click)="onFetchRandomCoctail()">
+          <i class="fas fa-random"></i>
+        </button>
+
+      </div>
+
+      <br>
+
+      <div class="info">
+        <img src="assets\cocktail-logo.png"> <b>Total Drinks: </b> 592
+        <img src="assets\ingredient-logo.png"> <b>Total Ingredients: </b>475
+        <img src="assets\image2.png"> <b>Drink Images: </b>592
+      </div>
+
+      <hr>
+
+      <div class="coctailInfo">
+        <h2>{{ coctail.name }}</h2>
+        <img src="{{ coctail.imgPath }}" class="img-thumbnail">
+        <p>{{ coctail.instructions }}</p>
+      </div>
+    
+    </div>
+
+    <div class="col-sm-3">
+      <img src="assets\coctail.png" class="mx-auto d-block" style="width:50%" alt="">
+    </div>
+
   </div>
-
-  <button type="button" class="btn btn-primary mr-2" (click)="onFetchCoctail1()">Coctail 1</button>
-  <button type="button" class="btn btn-primary" (click)="onFetchCoctail2()">Coctail 2</button>
-
 </div>

@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,34 +12,39 @@ export class AppComponent {
 
   coctail:any = {
     name:"",
-    imgPath:""
+    imgPath:"",
+    instructions:""
   }; 
 
-  onFetchCoctail1() {
+  onFetchCoctail(searchText:any) {
     this.http
       .get<any>(
-        'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
+        'https://www.thecocktaildb.com/api/json/v1/1/search.php',
+        { params:new HttpParams().set('s', searchText) }
       )
       .subscribe(
         responseData => {
           console.log(responseData);
-          this.coctail.name = responseData.drinks[1].strDrink; 
-          this.coctail.imgPath = responseData.drinks[1].strDrinkThumb;
+          this.coctail.name = responseData.drinks[0].strDrink; 
+          this.coctail.imgPath = responseData.drinks[0].strDrinkThumb;
+          this.coctail.instructions = responseData.drinks[0].strInstructions;
         }
       );
   }
 
-  onFetchCoctail2() {
+  onFetchRandomCoctail() {
     this.http
       .get<any>(
-        'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
+        'https://www.thecocktaildb.com/api/json/v1/1/random.php'
       )
       .subscribe(
         responseData => {
           console.log(responseData);
+          this.coctail.name = responseData.drinks[0].strDrink; 
+          this.coctail.imgPath = responseData.drinks[0].strDrinkThumb;
+          this.coctail.instructions = responseData.drinks[0].strInstructions;
         }
       );
   }
-
 
 }
