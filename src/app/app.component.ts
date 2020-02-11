@@ -1,5 +1,6 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class AppComponent {
 
   constructor(private http: HttpClient) {}
+
+  @ViewChild ('f', {static: false}) searchForm:NgForm;
 
   coctails:any = [];
   isRandom:boolean = false;
@@ -23,6 +26,7 @@ export class AppComponent {
       .subscribe(
         responseData => {
           console.log(responseData);
+          this.searchForm.reset();
           this.isRandom = false;
           this.coctails = responseData.drinks;
         }
