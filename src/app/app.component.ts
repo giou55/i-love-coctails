@@ -4,17 +4,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', './imageOverlay.css']
 })
 export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  coctail:any = {
-    name:"",
-    imgPath:"",
-    instructions:""
-  }; 
+  coctails:any = [];
+  isRandom:boolean = false;
+  ingredient = "coctails[0].strIngredient";
 
   onFetchCoctail(searchText:any) {
     this.http
@@ -25,9 +23,8 @@ export class AppComponent {
       .subscribe(
         responseData => {
           console.log(responseData);
-          this.coctail.name = responseData.drinks[0].strDrink; 
-          this.coctail.imgPath = responseData.drinks[0].strDrinkThumb;
-          this.coctail.instructions = responseData.drinks[0].strInstructions;
+          this.isRandom = false;
+          this.coctails = responseData.drinks;
         }
       );
   }
@@ -40,9 +37,8 @@ export class AppComponent {
       .subscribe(
         responseData => {
           console.log(responseData);
-          this.coctail.name = responseData.drinks[0].strDrink; 
-          this.coctail.imgPath = responseData.drinks[0].strDrinkThumb;
-          this.coctail.instructions = responseData.drinks[0].strInstructions;
+          this.isRandom = true;
+          this.coctails = responseData.drinks;
         }
       );
   }

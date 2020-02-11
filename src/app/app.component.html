@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-sm-3">
-      <img src="assets\coctail.png" class="mx-auto d-block" style="width:50%" alt="">
+      <img src="assets\coctail.png" class="mx-auto d-block" style="width:40%" alt="">
     </div>
 
     <div class="col-sm-6 text-center">
@@ -32,23 +32,86 @@
       <br>
 
       <div class="info">
-        <img src="assets\cocktail-logo.png"> <b>Total Drinks: </b> 592
-        <img src="assets\ingredient-logo.png"> <b>Total Ingredients: </b>475
-        <img src="assets\image2.png"> <b>Drink Images: </b>592
+        <img src="assets\cocktail-logo.png">Total Drinks: 592
+        <img src="assets\ingredient-logo.png">Total Ingredients: 475
+        <img src="assets\image2.png">Drink Images: 592
       </div>
 
       <hr>
 
-      <div class="coctailInfo">
-        <h2>{{ coctail.name }}</h2>
-        <img src="{{ coctail.imgPath }}" class="img-thumbnail">
-        <p>{{ coctail.instructions }}</p>
+
+      <div class="row" *ngIf=!isRandom>
+        <div class="col-sm-4" *ngFor="let coctail of coctails">
+          <div class="coctailInfo">
+            <div class="d-flex justify-content-center align-items-center" style="height:2.8rem">
+              <h2>{{ coctail.strDrink }}</h2>
+            </div>
+
+            <div class="img-container">
+              <img src="{{ coctail.strDrinkThumb }}" class="img-thumbnail image">
+              <div class="overlay">
+                <div class="text">Lookup full cocktail details</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf=isRandom>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <div class="coctailRandom">
+            <div class="d-flex justify-content-center align-items-center" style="height:2.8rem">
+              <h2>{{ coctails[0].strDrink }}</h2>
+            </div>
+
+            <img src="{{ coctails[0].strDrinkThumb }}" class="img-thumbnail image">
+            <p>{{ coctails[0].strInstructions }}</p>
+
+            <h3>Ingredients</h3>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient1>
+              {{ coctails[0].strMeasure1 }} {{ coctails[0].strIngredient1 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient2>
+              {{ coctails[0].strMeasure2 }} {{ coctails[0].strIngredient2 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient3>
+              {{ coctails[0].strMeasure3 }} {{ coctails[0].strIngredient3 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient4>
+              {{ coctails[0].strMeasure4 }} {{ coctails[0].strIngredient4 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient5>
+              {{ coctails[0].strMeasure5 }} {{ coctails[0].strIngredient5 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient6>
+              {{ coctails[0].strMeasure6 }} {{ coctails[0].strIngredient6 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient7>
+              {{ coctails[0].strMeasure7 }} {{ coctails[0].strIngredient7 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient8>
+              {{ coctails[0].strMeasure8 }} {{ coctails[0].strIngredient8 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient9>
+              {{ coctails[0].strMeasure9 }} {{ coctails[0].strIngredient9 }}
+            </span>
+            <span class="badge badge-info" *ngIf=coctails[0].strIngredient10>
+              {{ coctails[0].strMeasure10 }} {{ coctails[0].strIngredient10 }}
+            </span>
+            
+
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
       </div>
     
     </div>
 
     <div class="col-sm-3">
-      <img src="assets\coctail.png" class="mx-auto d-block" style="width:50%" alt="">
+      <img src="assets\coctail.png" class="mx-auto d-block" style="width:40%" alt="">
     </div>
 
   </div>
