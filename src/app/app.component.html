@@ -1,15 +1,15 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" style="min-height:80vh">
 
-    <div class="col-sm-3">
-      <img src="assets\coctail.png" class="mx-auto d-block" style="width:40%" alt="">
+    <div class="col-12 col-md-2 col-xl-3">
+      <img src="assets\coctail.png" class="mx-auto d-block glassImg" alt="">
     </div>
 
-    <div class="col-sm-6 text-center">
+    <div class="col-12 col-md-8 col-xl-6 text-center">
       <h1>Coctail Finder</h1>
       <div class="flex">
 
-        <form class="flex" id="submit" (ngSubmit)="onFetchCoctail(f.value.search)" #f="ngForm">
+        <form class="flex" id="submit" (ngSubmit)="onFetchCoctails(f.value.search)" #f="ngForm">
           <input
             type="text"
             id="search"
@@ -31,26 +31,32 @@
 
       <br>
 
-      <div class="info">
-        <img src="assets\cocktail-logo.png">Total Drinks: 592
-        <img src="assets\ingredient-logo.png">Total Ingredients: 475
-        <img src="assets\image2.png">Drink Images: 592
+      <div class="row no-gutters info">
+        <div class="col-12 col-md-4">
+          <img src="assets\cocktail-logo.png">Total Drinks: 592
+        </div>
+        <div class="col-12 col-md-4">
+          <img src="assets\ingredient-logo.png">Total Ingredients: 475
+        </div>
+        <div class="col-12 col-md-4">
+          <img src="assets\image2.png">Drink Images: 592
+        </div>
       </div>
 
       <hr>
 
 
-      <div class="row" *ngIf=!isRandom>
-        <div class="col-sm-4" *ngFor="let coctail of coctails">
+      <div class="row" *ngIf=!isOneCoctail>
+        <div class="col-sm-6 col-lg-4" *ngFor="let coctail of coctails">
           <div class="coctailInfo">
             <div class="d-flex justify-content-center align-items-center" style="height:2.8rem">
               <h2>{{ coctail.strDrink }}</h2>
             </div>
 
-            <div class="img-container">
+            <div class="img-container" (click)="onFetchOneCoctail(coctail.idDrink)">
               <img src="{{ coctail.strDrinkThumb }}" class="img-thumbnail image">
               <div class="overlay">
-                <div class="text">Lookup full cocktail details</div>
+                <div class="text">Cocktail<br>Details</div>
               </div>
             </div>
 
@@ -59,7 +65,7 @@
       </div>
 
 
-      <div class="row" *ngIf=isRandom>
+      <div class="row" *ngIf=isOneCoctail>
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
           <div class="coctailRandom">
@@ -110,9 +116,18 @@
     
     </div>
 
-    <div class="col-sm-3">
-      <img src="assets\coctail.png" class="mx-auto d-block" style="width:40%" alt="">
+    <div class="col-12 col-md-2 col-xl-3">
+      <img src="assets\coctail.png" class="mx-auto glassImg visibility" alt="">
     </div>
 
   </div>
+
+
+  <div class="row text-center mt-5" id="footer">
+
+    <div class="col-sm-12">Cocktail Finder - Powered by Angular 8 and TheCocktailDB API
+    </div>
+  
+  </div>
+
 </div>

@@ -1,12 +1,13 @@
 h1 {
   margin: 1.5rem auto;
+  font-size: 1.8rem;
   font-weight: bold;
   text-shadow: 3px 2px red;
 }
 
 .flex {
   display: flex;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 
@@ -47,7 +48,6 @@ input[type='text'] {
 }
 .info img {
     margin-top: 0;
-    margin-left: 0.6rem;
     margin-right: 0.2rem;
 }
 
@@ -62,7 +62,7 @@ hr {
 } 
 
 .coctailInfo h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .coctailInfo img {
@@ -72,11 +72,11 @@ hr {
 }
 
 .coctailRandom h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .coctailRandom h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .coctailRandom img {
@@ -97,4 +97,58 @@ hr {
   color: #000;
 }
 
+#footer {
+  font-size: 0.9rem;
+  background-color: #02111f;
+  padding: 0.8rem;
+}
+
+.glassImg {
+  width: 25%;
+}
+.visibility {
+  display: none;
+}
+
+@media screen and (min-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .glassImg {
+    width: 20%;
+  }
+  .flex {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  .glassImg {
+    width: 60%;
+  }
+  .visibility {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .glassImg {
+    width: 50%;
+  }
+  .coctailInfo h2 {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  .glassImg {
+    width: 35%;
+  }
+}
   

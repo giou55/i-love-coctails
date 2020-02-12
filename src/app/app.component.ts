@@ -14,10 +14,9 @@ export class AppComponent {
   @ViewChild ('f', {static: false}) searchForm:NgForm;
 
   coctails:any = [];
-  isRandom:boolean = false;
-  ingredient = "coctails[0].strIngredient";
+  isOneCoctail:boolean = false;
 
-  onFetchCoctail(searchText:any) {
+  onFetchCoctails(searchText:any) {
     this.http
       .get<any>(
         'https://www.thecocktaildb.com/api/json/v1/1/search.php',
@@ -25,9 +24,8 @@ export class AppComponent {
       )
       .subscribe(
         responseData => {
-          console.log(responseData);
           this.searchForm.reset();
-          this.isRandom = false;
+          this.isOneCoctail = false;
           this.coctails = responseData.drinks;
         }
       );
@@ -40,8 +38,21 @@ export class AppComponent {
       )
       .subscribe(
         responseData => {
-          console.log(responseData);
-          this.isRandom = true;
+          this.isOneCoctail = true;
+          this.coctails = responseData.drinks;
+        }
+      );
+  }
+
+  onFetchOneCoctail(idDrink:any) {
+    this.http
+      .get<any>(
+        'https://www.thecocktaildb.com/api/json/v1/1/lookup.php',
+        { params:new HttpParams().set('i', idDrink) }
+      )
+      .subscribe(
+        responseData => {
+          this.isOneCoctail = true;
           this.coctails = responseData.drinks;
         }
       );
