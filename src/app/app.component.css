@@ -62,7 +62,7 @@ hr {
 } 
 
 .coctailInfo h2 {
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .coctailInfo img {
@@ -113,6 +113,9 @@ hr {
 @media screen and (min-width: 576px) {
   h1 {
     font-size: 2rem;
+  }
+  .coctailInfo h2 {
+    font-size: 1.2rem;
   }
   .glassImg {
     width: 20%;
